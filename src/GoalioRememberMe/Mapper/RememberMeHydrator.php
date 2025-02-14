@@ -2,7 +2,7 @@
 
 namespace GoalioRememberMe\Mapper;
 
-use Zend\Stdlib\Hydrator\ClassMethods;
+use Laminas\Stdlib\Hydrator\ClassMethods;
 
 class RememberMeHydrator extends ClassMethods
 {

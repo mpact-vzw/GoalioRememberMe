@@ -17,7 +17,7 @@ class Login extends ZfcLoginForm
         parent::__construct($name, $options);
 
         $this->add(array(
-            'type' => 'Zend\Form\Element\Checkbox',
+            'type' => 'Laminas\Form\Element\Checkbox',
             'name' => 'remember_me',
             'options' => array(
                 'label' => 'Stay logged in',

@@ -6,7 +6,7 @@ Version 1.0.0 Created by the goalio UG (haftungsbeschränkt)
 Introduction
 ------------
 
-GoalioRememberMe is an extension module for ZfcUser that provides functionality to
+GoalioRememberMe is an extension module for LmcUser that provides functionality to
 stay logged in on subsequent visits to the site.
 
 Information
@@ -18,9 +18,8 @@ can be a little slow because we are a small company with only two developers. I 
 Requirements
 ------------
 
-* [Zend Framework 2](https://github.com/zendframework/zf2) (requirement of ZfcUser).
-* [ZfcBase](https://github.com/ZF-Commons/ZfcBase) (requirement of ZfcUser).
-* [ZfcUser](https://github.com/ZF-Commons/ZfcUser) (1.*).
+* [Laminas](https://github.com/laminas) (requirement of LmcUser).
+* [LmcUser](https://github.com/LM-Commons/LmcUser).
 
 Features / Goals
 ----------------
@@ -44,7 +43,7 @@ Installation
     }
     ```
 
-2. Now tell composer to download ZfcUser by running the command:
+2. Now tell composer to download LmcUser by running the command:
 
     ```bash
     $ php composer.phar update
@@ -59,8 +58,6 @@ Installation
     return array(
         'modules' => array(
             // ...
-            'ZfcBase',
-            'ZfcUser',
             'GoalioRememberMe'
         ),
         // ...
@@ -69,9 +66,9 @@ Installation
 
 2. Then Import the SQL schema located in `./vendor/goalio/goalio-rememberme/data/schema.sql`.
 
-### Post-Install: Zend\Db
+### Post-Install: Laminas\Db
 
-1. If you do not already have a valid Zend\Db\Adapter\Adapter in your service
+1. If you do not already have a valid Laminas\Db\Adapter\Adapter in your service
    manager configuration, put the following in `./config/autoload/database.local.php`:
 
         <?php
@@ -86,8 +83,8 @@ Installation
         return array(
             'service_manager' => array(
                 'factories' => array(
-                    'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
-                        return new Zend\Db\Adapter\Adapter(array(
+                    'Laminas\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+                        return new Laminas\Db\Adapter\Adapter(array(
                             'driver'    => 'pdo',
                             'dsn'       => 'mysql:dbname='.$dbParams['database'].';host='.$dbParams['hostname'],
                             'database'  => $dbParams['database'],
@@ -147,7 +144,7 @@ interested in hearing what can be done to extend the functionality.
 How does it work
 ----------------
 
-This module adds an additional AuthenticationAdapter to the Process in ZfcUser. If any prior
+This module adds an additional AuthenticationAdapter to the Process in LmcUser. If any prior
 authentication is successful (i.e. the default) and the user requests to set a cookie, the
 adapter will do so and create the necessary updates in the DB to identify the cookie.
 

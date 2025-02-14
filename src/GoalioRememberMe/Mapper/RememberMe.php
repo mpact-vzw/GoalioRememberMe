@@ -3,7 +3,7 @@
 namespace GoalioRememberMe\Mapper;
 
 use ZfcBase\Mapper\AbstractDbMapper;
-use Zend\Db\Sql\Where;
+use Laminas\Db\Sql\Where;
 
 class RememberMe extends AbstractDbMapper
 {

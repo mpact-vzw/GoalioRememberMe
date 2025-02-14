@@ -2,10 +2,10 @@
 
 namespace GoalioRememberMe\Service;
 
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 use ZfcBase\EventManager\EventProvider;
 use GoalioRememberMe\Options\RememberMeOptionsInterface;
-use Zend\Math\Rand;
+use Laminas\Math\Rand;
 
 class RememberMe extends EventProvider
 {
@@ -90,7 +90,7 @@ class RememberMe extends EventProvider
      * @return Boolean
      */
     public function isCookieLogin() {
-        $session = new \Zend\Session\Container('zfcuser');
+        $session = new \Laminas\Session\Container('zfcuser');
         return $session->offsetGet("cookieLogin");
     }
 

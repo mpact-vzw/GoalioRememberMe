@@ -3,10 +3,10 @@
 namespace GoalioRememberMe\Authentication\Adapter;
 
 use ZfcUser\Authentication\Adapter\AbstractAdapter;
-use Zend\Authentication\Result as AuthenticationResult;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Stdlib\RequestInterface as Request;
-use Zend\Stdlib\ResponseInterface as Response;
+use Laminas\Authentication\Result as AuthenticationResult;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Stdlib\RequestInterface as Request;
+use Laminas\Stdlib\ResponseInterface as Response;
 use ZfcUser\Authentication\Adapter\AdapterChainEvent as AuthEvent;
 
 class Cookie extends AbstractAdapter
@@ -31,7 +31,7 @@ class Cookie extends AbstractAdapter
              *  but afterwords login with identity/credential
              *  we remove the "cookieLogin" session.
              */
-            $session = new \Zend\Session\Container('zfcuser');
+            $session = new \Laminas\Session\Container('zfcuser');
             $session->offsetSet("cookieLogin", false);
 
             return;
@@ -88,7 +88,7 @@ class Cookie extends AbstractAdapter
           ->setMessages(array('Authentication successful.'));
 
         // Reference for weak login. Should not be allowed to change PW etc.
-        $session = new \Zend\Session\Container('zfcuser');
+        $session = new \Laminas\Session\Container('zfcuser');
         $session->offsetSet("cookieLogin", true);
     }
 

@@ -1,11 +1,11 @@
 <?php
 namespace GoalioRememberMe;
 
-use Zend\Mvc\MvcEvent;
-use Zend\Http\Request as HttpRequest;
-use Zend\Loader\StandardAutoloader;
-use Zend\Loader\AutoloaderFactory;
-use Zend\EventManager\EventInterface;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Http\Request as HttpRequest;
+use Laminas\Loader\StandardAutoloader;
+use Laminas\Loader\AutoloaderFactory;
+use Laminas\EventManager\EventInterface;
 
 class Module {
 
@@ -49,20 +49,20 @@ class Module {
                 },
 
                 'goaliorememberme_rememberme_mapper' => function ($sm) {
-                    $options = $sm->get('zfcuser_module_options');
+                    $options = $sm->get('lmcuser_module_options');
                     $rememberOptions = $sm->get('goaliorememberme_module_options');
                     $mapper = new Mapper\RememberMe;
-                    $mapper->setDbAdapter($sm->get('zfcuser_zend_db_adapter'));
+                    $mapper->setDbAdapter($sm->get('lmcuser_laminas_db_adapter'));
                     $entityClass = $rememberOptions->getRememberMeEntityClass();
                     $mapper->setEntityPrototype(new $entityClass);
                     $mapper->setHydrator(new Mapper\RememberMeHydrator());
                     return $mapper;
                 },
 
-                'zfcuser_login_form' => function($sm) {
-                    $options = $sm->get('zfcuser_module_options');
+                'lmcuser_login_form' => function($sm) {
+                    $options = $sm->get('lmcuser_module_options');
                     $form = new Form\Login(null, $options);
-                    $form->setInputFilter(new \ZfcUser\Form\LoginFilter($options));
+                    $form->setInputFilter(new \LmcUser\Form\LoginFilter($options));
                     return $form;
                 },
             ),
@@ -80,20 +80,20 @@ class Module {
         $app = $e->getApplication();
         $serviceManager = $app->getServiceManager();
 
-        $userIsLoggedIn = $serviceManager->get('zfcuser_auth_service')->hasIdentity();
+        $userIsLoggedIn = $serviceManager->get('lmcuser_auth_service')->hasIdentity();
         $cookie = $e->getRequest()->getCookie();
 
         // do autologin only if not done before and cookie is present
         if(!$userIsLoggedIn && isset($cookie['remember_me'])) {
-            $adapter = $e->getApplication()->getServiceManager()->get('ZfcUser\Authentication\Adapter\AdapterChain');
+            $adapter = $e->getApplication()->getServiceManager()->get('Lmcuser\Authentication\Adapter\AdapterChain');
             $adapter->prepareForAuthentication($e->getRequest());
-            $authService = $e->getApplication()->getServiceManager()->get('zfcuser_auth_service');
+            $authService = $e->getApplication()->getServiceManager()->get('lmcuser_auth_service');
 
             $auth = $authService->authenticate($adapter);
         }
 
-        $app->getEventManager()->getSharedManager()->attach('ZfcUser\Service\User', 'changePassword.post', function(EventInterface $e) use ($serviceManager) {
-            $userId = $serviceManager->get('zfcuser_auth_service')->getIdentity()->getId();
+        $app->getEventManager()->getSharedManager()->attach('Lmcuser\Service\User', 'changePassword.post', function(EventInterface $e) use ($serviceManager) {
+            $userId = $serviceManager->get('lmcuser_auth_service')->getIdentity()->getId();
             $serviceManager->get('goaliorememberme_rememberme_mapper')->removeAll($userId);
         });
     }
