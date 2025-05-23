@@ -2,13 +2,13 @@
 
 namespace GoalioRememberMe\Entity;
 
-class RememberMe
+use LmcUser\Entity\User;
+
+class RememberMe extends User
 {
     protected $sid;
 
     protected $token;
-
-    protected $user_id;
 
     public function getSid()
     {
@@ -32,11 +32,11 @@ class RememberMe
 
     public function setUserId($user_id)
     {
-        $this->user_id = $user_id;
+        return $this->setId($user_id);
     }
 
     public function getUserId()
     {
-        return $this->user_id;
+        return $this->getId();
     }
 }

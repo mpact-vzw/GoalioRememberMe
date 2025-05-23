@@ -2,17 +2,17 @@
 
 namespace GoalioRememberMe\Form;
 
-use ZfcUser\Options\AuthenticationOptionsInterface;
-use ZfcUser\Form\Login as ZfcLoginForm;
+use LmcUser\Options\AuthenticationOptionsInterface;
+use LmcUser\Form\Login as LoginForm;
 
-class Login extends ZfcLoginForm
+class Login extends LoginForm
 {
     /**
      * @var AuthenticationOptionsInterface
      */
     protected $authOptions;
 
-    public function __construct($name = null, AuthenticationOptionsInterface $options)
+    public function __construct($name = null, AuthenticationOptionsInterface $options = null)
     {
         parent::__construct($name, $options);
 
