@@ -2,11 +2,11 @@
 
 namespace GoalioRememberMe\Mapper;
 
-use Laminas\Stdlib\Hydrator\ClassMethods;
+use Laminas\Hydrator\ClassMethodsHydrator;
 
-class RememberMeHydrator extends ClassMethods
+class RememberMeHydrator extends ClassMethodsHydrator
 {
-    public function extract($object)
+    public function extract($object) : array
     {
         $data = parent::extract($object);
         return $data;

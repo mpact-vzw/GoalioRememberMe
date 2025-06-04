@@ -1,5 +1,5 @@
 {
-    "name": "goalio/goalio-rememberme",
+    "name": "mpact-vzw/goalio-rememberme",
     "description": "Adding Remember Me functionalitiy to LmcUser / Laminas",
     "type": "library",
     "license": "BSD-3-Clause",

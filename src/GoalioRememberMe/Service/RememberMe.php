@@ -3,7 +3,7 @@
 namespace GoalioRememberMe\Service;
 
 use Laminas\ServiceManager\ServiceManager;
-use ZfcBase\EventManager\EventProvider;
+use LmcUser\EventManager\EventProvider;
 use GoalioRememberMe\Options\RememberMeOptionsInterface;
 use Laminas\Math\Rand;
 

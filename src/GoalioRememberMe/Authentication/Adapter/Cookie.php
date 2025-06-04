@@ -2,12 +2,12 @@
 
 namespace GoalioRememberMe\Authentication\Adapter;
 
-use ZfcUser\Authentication\Adapter\AbstractAdapter;
+use LmcUser\Authentication\Adapter\AbstractAdapter;
 use Laminas\Authentication\Result as AuthenticationResult;
 use Laminas\ServiceManager\ServiceManager;
 use Laminas\Stdlib\RequestInterface as Request;
 use Laminas\Stdlib\ResponseInterface as Response;
-use ZfcUser\Authentication\Adapter\AdapterChainEvent as AuthEvent;
+use LmcUser\Authentication\Adapter\AdapterChainEvent as AuthEvent;
 
 class Cookie extends AbstractAdapter
 {
