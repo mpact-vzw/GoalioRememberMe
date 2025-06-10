@@ -90,7 +90,7 @@ class RememberMe extends EventProvider
      * @return Boolean
      */
     public function isCookieLogin() {
-        $session = new \Laminas\Session\Container('zfcuser');
+        $session = new \Laminas\Session\Container('lmcuser');
         return $session->offsetGet("cookieLogin");
     }
 

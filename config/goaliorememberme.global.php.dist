@@ -11,7 +11,7 @@ $settings = array(
      * RememberMe Model Entity Class
      *
      * Name of Entity class to use. Useful for using your own entity class
-     * instead of the default one provided. Default is ZfcUser\Entity\User.
+     * instead of the default one provided. Default is LmcUser\Entity\User.
      */
     //'remember_me_entity_class' => 'GoalioRememberMe\Entity\RememberMe',
 
@@ -39,25 +39,25 @@ $settings = array(
 );
 
 /**
- * ZfcUser Configuration
+ * LmcUser Configuration
  *
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$zfcSettings = array(
+$lmcSettings = array(
 
     /**
      * Authentication Adapters
      *
      * Specify the adapters that will be used to try and authenticate the user
      *
-     * Default value: array containing 'ZfcUser\Authentication\Adapter\Db'
-     * Accepted values: array containing services that implement 'ZfcUser\Authentication\Adapter\ChainableAdapter'
+     * Default value: array containing 'LmcUser\Authentication\Adapter\Db'
+     * Accepted values: array containing services that implement 'LmcUser\Authentication\Adapter\ChainableAdapter'
      */
     'auth_adapters' => array( 50 => 'GoalioRememberMe\Authentication\Adapter\Cookie' ),
 
     /**
-     * End of ZfcUser configuration
+     * End of LmcUser configuration
      */
 );
 
@@ -66,5 +66,5 @@ $zfcSettings = array(
  */
 return array(
     'goaliorememberme' => $settings,
-    'zfcuser' => $zfcSettings,
+    'lmcuser' => $lmcSettings,
 );
